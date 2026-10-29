@@ -2,12 +2,37 @@
 
 每讲一个目录，内含教案和示例代码。课程计划见上级目录的 `plan/`。
 
+## 前置准备
+
+### 1. 申请模型 API Key
+
+课程中的真实模型练习需要 API Key。推荐使用 **DeepSeek** 作为主模型；图像判读练习还需要视觉模型，可使用 **Agnes AI**。
+
+1. **DeepSeek**：打开 [DeepSeek 开放平台](https://platform.deepseek.com/)，注册并登录，在 API Keys 页面创建 Key。API 使用可能产生费用，请在平台查看余额和计费规则。
+2. **Agnes AI**：打开 [Agnes AI 官网](https://agnes-ai.com/) 或 [API 平台](https://apihub.agnes-ai.com/)，注册登录后创建 API Key。平台提供免费 API，具体免费额度、模型和限制以平台页面为准。
+3. 将 `.env.example` 复制为 `.env`，把 DeepSeek Key 填入 `MAIN_API_KEY`。如使用 Agnes 视觉模型，把 Agnes Key、接口地址和模型名填入 `VLM_API_KEY`、`VLM_BASE_URL`、`VLM_MODEL`；接口地址和可用模型名以 Agnes 平台当前说明为准。L6 的第二个视觉模型对比还可填写 `ALT_VLM_*`。
+
+```dotenv
+MAIN_API_KEY=你的_DeepSeek_Key
+VLM_API_KEY=你的_Agnes_Key
+VLM_BASE_URL=https://apihub.agnes-ai.com/v1
+VLM_MODEL=agnes-2.5-flash
+```
+
+不要将真实 Key 提交到 Git 或发给他人。没有 Key 时，可以先运行各讲的 `99_假模型剧本.ipynb` 熟悉流程；剧本输出不是实际模型结果。
+
+### 2. 安装 VS Code 和扩展
+
+1. 从 [Visual Studio Code 官网](https://code.visualstudio.com/) 下载并安装 VS Code。
+2. 打开 VS Code，点击左侧**扩展**图标，或按 `Ctrl+Shift+X`，搜索并安装 Microsoft 发布的 **Python**（`ms-python.python`）和 **Jupyter**（`ms-toolsai.jupyter`）扩展。
+3. 完成下面的 `uv sync` 后，用 VS Code 打开 `course` 目录和 `.ipynb` 文件；在右上角选择课程目录的 `.venv` Python 内核，逐格运行。
+
 ## 快速开始
 
 ```powershell
 cd course
 uv sync                     # 按 uv.lock 安装全部依赖（含 ipykernel、jupyterlab），Python 3.13
-copy .env.example .env      # 填写 DeepSeek Key；没有 Key 时设 COURSE_FAKE_LLM=1
+copy .env.example .env      # 填写主模型及视觉模型配置；没有 Key 时可先看假模型剧本
 uv run python lessons/L00_环境检查/check_env.py
 ```
 
