@@ -24,7 +24,7 @@ TRACK_CYCLE_HOURS_BJ = (2, 8, 14, 20)
 
 # 取数地址不写明文：优先读环境变量 TYPHOON_API_URL（讲师可指向自己的代理），
 # 未设置时用下面这段编码后的内置地址。
-_ENDPOINT = "aHR0cDovLzE5Mi4xNjguMTM1LjQwOjgxL2xsbXNlcnZlci9nZXR5cGhkYXRhP2RhdGV0aW1lPXtkYXRldGltZV9ian0="
+_ENDPOINT = "aHR0cDovL3RtcC5nZG1vLm9yZzo4MS9sbG1zZXJ2ZXIvZ2V0eXBoZGF0YT9kYXRldGltZT17ZGF0ZXRpbWVfYmp9"
 
 # 诊断图编号对照。真实系统通过 getxxzx 接口查询。
 # 554→803 来自 huishang_demo/台风图像.md 的示例；其余为教学构造的占位编号，不是真实编号。

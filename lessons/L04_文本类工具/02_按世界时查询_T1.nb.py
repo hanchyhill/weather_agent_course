@@ -35,6 +35,7 @@ import requests
 
 from weather_tools.timeutil import convert_tz
 from weather_tools.typhoon import data_endpoint
+from common.weather_http import get as weather_get
 
 # 真实接口地址由 data_endpoint() 提供（内网，不在讲义里明文给出）
 
@@ -49,7 +50,7 @@ def get_typhoon_data_utc(datetime: str) -> str:
     datetime_bj = convert_tz(datetime, "%Y-%m-%d %H:%M:%S", "UTC", "UTC+8")
     url = data_endpoint(datetime_bj)
     try:
-        resp = requests.get(url, timeout=20)
+        resp = weather_get(url, timeout=20)
         resp.raise_for_status()
         return json.dumps(resp.json(), ensure_ascii=False)
     except requests.exceptions.Timeout:
