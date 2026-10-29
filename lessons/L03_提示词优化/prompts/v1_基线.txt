@@ -1,0 +1,17 @@
+根据图像数据，统计和输出最高气温高于{threshold}°C的区县数量，并列出这些区县的名称和气温。以JSON格式输出。
+JSON格式如下：
+```json
+{{
+    "Count": number,
+    "Stations": [
+        {{"County": "区县名称1","City": "地市名称1", "Temperature": Temp1}},
+        {{"County": "区县名称2","City": "地市名称2", "Temperature": Temp2}}
+    ]
+}}
+```
+其中Count字段是高于{threshold}°C的区县数量，Stations字段是高于{threshold}°C的区县列表。
+先输出分析图中数据的思考过程，最后再把最终结果以JSON格式输出。
+
+图像中包含的广东的区县，区县所属的地市，以及位于广东的区域方位的对照表格如下，图中的数据跟表格中的地理位置一一对应。
+其中County字段是区县名称，City字段是各个区县对应的广东的地市/地级市的名称，Region字段是区县位于广东的区域方位。
+{geo_table}

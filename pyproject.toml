@@ -1,0 +1,43 @@
+[project]
+name = "forecaster-agent-course"
+version = "0.1.0"
+description = "预报员智能体开发实操课程：示例代码与离线数据"
+requires-python = ">=3.13,<3.15"
+# 版本于 2026-10-08 锁定。学员执行 uv sync 即可装好全部依赖（含运行 .ipynb 所需的 ipykernel 和 JupyterLab）
+dependencies = [
+    # 智能体框架
+    "deepagents==0.7.23",
+    "langchain==1.4.4",
+    "langchain-openai==1.7.0",
+    "langgraph==1.2.14",
+    # 工具与数据
+    "python-dotenv==1.2.4",
+    "pillow==12.3.0",
+    "pandas==3.0.6",
+    # 运行 notebook：VS Code 只需要 ipykernel；不用 VS Code 的学员用 jupyterlab
+    "ipykernel==7.4.0",
+    "jupyterlab==4.6.4",
+    # 跑验收测试
+    "pytest==9.1.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["common", "weather_tools"]
+only-include = ["common", "weather_tools", "lessons_import.py"]
+
+[dependency-groups]
+# 讲师用：把 .nb.py 转成 .ipynb 并批量执行（tools/build_notebooks.py）
+dev = [
+    "nbclient==0.11.0",
+    "nbformat==5.11.1",
+    "jupytext==1.19.6",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "lessons"]
+python_files = ["test_*.py"]
+pythonpath = ["."]

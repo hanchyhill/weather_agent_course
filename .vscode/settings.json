@@ -1,0 +1,13 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "jupyter.notebookFileRoot": "${fileDirname}",
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": ["tests", "lessons"],
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.ipynb_checkpoints": true
+  },
+  "files.encoding": "utf8"
+}
